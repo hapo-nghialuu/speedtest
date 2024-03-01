@@ -51,6 +51,6 @@ if __name__ == "__main__":
         pprint(message)  # Sử dụng pprint để in thông điệp
         print(message)  # Sử dụng pprint để in thông điệp
 
-        # send_message_to_slack("\n".join([f"{key}: {value}" for key, value in message.items()]))
+        send_message_to_slack("\n".join([f"{key}: {value}" for key, value in message.items()]))
 
         sleep(10)  # Nghỉ 1 giây trước khi đo lại
