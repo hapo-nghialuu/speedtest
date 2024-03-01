@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Exit when any command fails
+set -e
+
+# Change to the script's directory
+cd ~PATH_TO_PROJECT~ # TODO
+
+
+# Config git
+export SSH_KEY_PATH="/PATH_TO_HOME_FOLDER/.ssh/id_rsa" # TODO
+eval `ssh-agent -s`
+ssh-add $SSH_KEY_PATH
+git config --global --add safe.directory ~PATH_TO_PROJECT~ # TODO
+
+# Pull new source code
+echo "Pulling new source code..."
+git fetch origin master
+git checkout -f
+git checkout master
+git pull origin master
+
+echo "Activating python virtual environment..."
+# Config environment
+. ./venv/bin/activate
+
+echo "Installing dependencies..."
+pip install -r requirements.txt
+
+echo "running speedtest network..."
+python3 ~PATH_TO_PROJECT~/main.py # TODO
+
+echo "\nDone."
+exit 0

@@ -114,3 +114,6 @@ uwsgi.ini
 *.pem
 
 *.out
+
+# Script files
+run.sh
